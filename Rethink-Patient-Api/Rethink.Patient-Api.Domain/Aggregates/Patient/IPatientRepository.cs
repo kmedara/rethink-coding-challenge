@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Rethink.Patient_Api.Domain.Aggregates.Patient
 {
-    internal interface IPatientRepository
+    public interface IPatientRepository
     {
+        public Task<IEnumerable<Patient>> GetPatientsAsync(IGetAllPatientsQueryParameters parameters);
     }
 }

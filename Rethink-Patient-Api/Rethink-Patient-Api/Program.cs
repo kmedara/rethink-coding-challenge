@@ -3,8 +3,11 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Rethink.Patient_Api.CQRS;
 using Rethink.Patient_Api.CQRS.Commands;
 using Rethink.Patient_Api.CQRS.Queries;
+using Rethink.Patient_Api.Data;
 using Rethink.Patient_Api.Domain.Aggregates.Patient;
 using System.Net;
+using Microsoft.Extensions.Configuration;
+using Rethink.Patient_Api.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,13 +18,26 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//CQRS Registrations
-builder.Services.TryAddSingleton<IMediator,Mediator>();
+var connectionString = new ConnectionString(
+                builder.Configuration.GetConnectionString("ApplicationDbContext")
+                );
 
-builder.Services.AddTransient<ICommandHandler<AddNewPatientCommand, Task<Patient>>,
-                AddNewPatientCommandHandler>();
+//Database and mediator services
+builder.Services
+    .AddTransient<IUnitOfWork, UnitOfWork>()
+    .AddSingleton<ConnectionString>(connectionString)
+    .AddSingleton<DbContextFactory>()
+    .TryAddSingleton<IMediator,Mediator>();
 
-builder.Services.AddTransient<IQueryHandler<GetAllPatientsQuery, Task<List<Patient>>>, GetAllPatientsQueryHandler>();
+//Repositories
+builder.Services
+    .AddTransient<IPatientRepository, PatientRepository>();
+
+
+//CQRS Handlers
+builder.Services
+    .AddTransient<ICommandHandler<AddNewPatientCommand, Task<Patient>>, AddNewPatientCommandHandler>()
+    .AddTransient<IQueryHandler<GetAllPatientsQuery, Task<List<Patient>>>, GetAllPatientsQueryHandler>();
 
 var app = builder.Build();
 

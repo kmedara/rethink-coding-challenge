@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rethink.Patient-Api", "Rethink-Patient-Api\Rethink.Patient-Api.csproj", "{DBFD13D5-ADDC-495E-AC04-D6470C70D235}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rethink.Patient-Api.Api", "Rethink-Patient-Api\Rethink.Patient-Api.Api.csproj", "{DBFD13D5-ADDC-495E-AC04-D6470C70D235}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rethink.Patient-Api.Test", "Rethink.Patient-Api.Test\Rethink.Patient-Api.Test.csproj", "{136612E7-63B9-4F8C-A55A-12796B33A66A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rethink.Patient-Api.Test", "Rethink.Patient-Api.Test\Rethink.Patient-Api.Test.csproj", "{136612E7-63B9-4F8C-A55A-12796B33A66A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rethink.Patient-Api.Domain", "Rethink.Patient-Api.Domain\Rethink.Patient-Api.Domain.csproj", "{C5F11EE7-A007-4C72-8D4D-83B7A336B4EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rethink.Patient-Api.Domain", "Rethink.Patient-Api.Domain\Rethink.Patient-Api.Domain.csproj", "{C5F11EE7-A007-4C72-8D4D-83B7A336B4EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rethink.Patient-Api.CQRS", "Rethink.Patient-Api.CQRS\Rethink.Patient-Api.CQRS.csproj", "{A4F79AA3-348A-4A26-A665-500ADDE79B1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rethink.Patient-Api.CQRS", "Rethink.Patient-Api.CQRS\Rethink.Patient-Api.CQRS.csproj", "{A4F79AA3-348A-4A26-A665-500ADDE79B1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rethink.Patient-Api.Data", "Rethink.Patient-Api.Data\Rethink.Patient-Api.Data.csproj", "{A689AE7D-A63D-4D1A-92D1-F33DF95FD0CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A4F79AA3-348A-4A26-A665-500ADDE79B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4F79AA3-348A-4A26-A665-500ADDE79B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4F79AA3-348A-4A26-A665-500ADDE79B1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A689AE7D-A63D-4D1A-92D1-F33DF95FD0CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A689AE7D-A63D-4D1A-92D1-F33DF95FD0CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A689AE7D-A63D-4D1A-92D1-F33DF95FD0CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A689AE7D-A63D-4D1A-92D1-F33DF95FD0CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

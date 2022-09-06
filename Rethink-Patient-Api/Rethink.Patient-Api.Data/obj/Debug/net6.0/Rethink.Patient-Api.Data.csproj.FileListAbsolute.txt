@@ -1,0 +1,15 @@
+C:\Users\kmedara\source\repos\rethink-coding-challenge\Rethink-Patient-Api\Rethink.Patient-Api.Data\obj\Debug\net6.0\Rethink.Patient-Api.Data.csproj.AssemblyReference.cache
+C:\Users\kmedara\source\repos\rethink-coding-challenge\Rethink-Patient-Api\Rethink.Patient-Api.Data\obj\Debug\net6.0\Rethink.Patient-Api.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kmedara\source\repos\rethink-coding-challenge\Rethink-Patient-Api\Rethink.Patient-Api.Data\obj\Debug\net6.0\Rethink.Patient-Api.Data.AssemblyInfoInputs.cache
+C:\Users\kmedara\source\repos\rethink-coding-challenge\Rethink-Patient-Api\Rethink.Patient-Api.Data\obj\Debug\net6.0\Rethink.Patient-Api.Data.AssemblyInfo.cs
+C:\Users\kmedara\source\repos\rethink-coding-challenge\Rethink-Patient-Api\Rethink.Patient-Api.Data\obj\Debug\net6.0\Rethink.Patient-Api.Data.csproj.CoreCompileInputs.cache
+C:\Users\kmedara\source\repos\rethink-coding-challenge\Rethink-Patient-Api\Rethink.Patient-Api.Data\bin\Debug\net6.0\Rethink.Patient-Api.Data.deps.json
+C:\Users\kmedara\source\repos\rethink-coding-challenge\Rethink-Patient-Api\Rethink.Patient-Api.Data\bin\Debug\net6.0\Rethink.Patient-Api.Data.dll
+C:\Users\kmedara\source\repos\rethink-coding-challenge\Rethink-Patient-Api\Rethink.Patient-Api.Data\bin\Debug\net6.0\Rethink.Patient-Api.Data.pdb
+C:\Users\kmedara\source\repos\rethink-coding-challenge\Rethink-Patient-Api\Rethink.Patient-Api.Data\bin\Debug\net6.0\Rethink.Patient-Api.Domain.dll
+C:\Users\kmedara\source\repos\rethink-coding-challenge\Rethink-Patient-Api\Rethink.Patient-Api.Data\bin\Debug\net6.0\Rethink.Patient-Api.Domain.pdb
+C:\Users\kmedara\source\repos\rethink-coding-challenge\Rethink-Patient-Api\Rethink.Patient-Api.Data\obj\Debug\net6.0\Rethink.Patient-Api.Data.csproj.CopyComplete
+C:\Users\kmedara\source\repos\rethink-coding-challenge\Rethink-Patient-Api\Rethink.Patient-Api.Data\obj\Debug\net6.0\Rethink.Patient-Api.Data.dll
+C:\Users\kmedara\source\repos\rethink-coding-challenge\Rethink-Patient-Api\Rethink.Patient-Api.Data\obj\Debug\net6.0\refint\Rethink.Patient-Api.Data.dll
+C:\Users\kmedara\source\repos\rethink-coding-challenge\Rethink-Patient-Api\Rethink.Patient-Api.Data\obj\Debug\net6.0\Rethink.Patient-Api.Data.pdb
+C:\Users\kmedara\source\repos\rethink-coding-challenge\Rethink-Patient-Api\Rethink.Patient-Api.Data\obj\Debug\net6.0\ref\Rethink.Patient-Api.Data.dll

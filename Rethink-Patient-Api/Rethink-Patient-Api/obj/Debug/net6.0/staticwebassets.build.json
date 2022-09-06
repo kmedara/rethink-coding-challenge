@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "41dWQkUt16ureIzmYVdgZN0dpke6Gkj9KqADpgnjMok=",
-  "Source": "Rethink.Patient-Api",
-  "BasePath": "_content/Rethink.Patient-Api",
+  "Hash": "ZQK70bHp2Yxwf80yGAWOmBuvp25Zxg2nTI9eaAL1vZQ=",
+  "Source": "Rethink.Patient-Api.Api",
+  "BasePath": "_content/Rethink.Patient-Api.Api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

@@ -8,15 +8,27 @@ using System.Threading.Tasks;
 
 namespace Rethink.Patient_Api.CQRS.Queries
 {
-    public sealed class GetAllPatientsQuery: IQuery<Task<List<Domain.Aggregates.Patient.Patient>>>
+    public sealed class GetAllPatientsQuery :
+        Domain.Aggregates.Patient.IGetAllPatientsQueryParameters,
+        IQuery<Task<List<Domain.Aggregates.Patient.Patient>>>
     {
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public DateTime[]? Birthday { get; set; }
+        public string? Gender { get; set; }
     }
 
-    public class GetAllPatientsQueryHandler : IQueryHandler<GetAllPatientsQuery, Task<List<Domain.Aggregates.Patient.Patient>>>
+    public class GetAllPatientsQueryHandler : 
+        IQueryHandler<GetAllPatientsQuery, Task<List<Domain.Aggregates.Patient.Patient>>>
     {
-        public Task<List<Patient>> Handle(GetAllPatientsQuery query)
+        private readonly IPatientRepository _patientRepository;
+        public GetAllPatientsQueryHandler(IPatientRepository patientRepository)
         {
-            throw new NotImplementedException();
+            _patientRepository = patientRepository;
+        }
+        public async Task<List<Patient>> Handle(GetAllPatientsQuery query)
+        {
+            return (await _patientRepository.GetPatientsAsync(query)).ToList();
         }
 
     }
