@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Rethink.Patient-Api.Test": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:52953;http://localhost:52954"
+    }
+  }
+}

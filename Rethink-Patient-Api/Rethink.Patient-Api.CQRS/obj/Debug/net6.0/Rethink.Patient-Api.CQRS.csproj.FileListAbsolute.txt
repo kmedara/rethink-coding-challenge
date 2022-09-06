@@ -1,0 +1,15 @@
+C:\Users\kmedara\source\repos\Rethink-Patient-Api\Rethink.Patient-Api.CQRS\obj\Debug\net6.0\Rethink.Patient-Api.CQRS.csproj.AssemblyReference.cache
+C:\Users\kmedara\source\repos\Rethink-Patient-Api\Rethink.Patient-Api.CQRS\obj\Debug\net6.0\Rethink.Patient-Api.CQRS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kmedara\source\repos\Rethink-Patient-Api\Rethink.Patient-Api.CQRS\obj\Debug\net6.0\Rethink.Patient-Api.CQRS.AssemblyInfoInputs.cache
+C:\Users\kmedara\source\repos\Rethink-Patient-Api\Rethink.Patient-Api.CQRS\obj\Debug\net6.0\Rethink.Patient-Api.CQRS.AssemblyInfo.cs
+C:\Users\kmedara\source\repos\Rethink-Patient-Api\Rethink.Patient-Api.CQRS\obj\Debug\net6.0\Rethink.Patient-Api.CQRS.csproj.CoreCompileInputs.cache
+C:\Users\kmedara\source\repos\Rethink-Patient-Api\Rethink.Patient-Api.CQRS\bin\Debug\net6.0\Rethink.Patient-Api.CQRS.deps.json
+C:\Users\kmedara\source\repos\Rethink-Patient-Api\Rethink.Patient-Api.CQRS\bin\Debug\net6.0\Rethink.Patient-Api.CQRS.dll
+C:\Users\kmedara\source\repos\Rethink-Patient-Api\Rethink.Patient-Api.CQRS\bin\Debug\net6.0\Rethink.Patient-Api.CQRS.pdb
+C:\Users\kmedara\source\repos\Rethink-Patient-Api\Rethink.Patient-Api.CQRS\bin\Debug\net6.0\Rethink.Patient-Api.Domain.dll
+C:\Users\kmedara\source\repos\Rethink-Patient-Api\Rethink.Patient-Api.CQRS\bin\Debug\net6.0\Rethink.Patient-Api.Domain.pdb
+C:\Users\kmedara\source\repos\Rethink-Patient-Api\Rethink.Patient-Api.CQRS\obj\Debug\net6.0\Rethink.Patient-Api.CQRS.csproj.CopyComplete
+C:\Users\kmedara\source\repos\Rethink-Patient-Api\Rethink.Patient-Api.CQRS\obj\Debug\net6.0\Rethink.Patient-Api.CQRS.dll
+C:\Users\kmedara\source\repos\Rethink-Patient-Api\Rethink.Patient-Api.CQRS\obj\Debug\net6.0\refint\Rethink.Patient-Api.CQRS.dll
+C:\Users\kmedara\source\repos\Rethink-Patient-Api\Rethink.Patient-Api.CQRS\obj\Debug\net6.0\Rethink.Patient-Api.CQRS.pdb
+C:\Users\kmedara\source\repos\Rethink-Patient-Api\Rethink.Patient-Api.CQRS\obj\Debug\net6.0\ref\Rethink.Patient-Api.CQRS.dll

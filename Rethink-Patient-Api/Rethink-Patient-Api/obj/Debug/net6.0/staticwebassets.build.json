@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "41dWQkUt16ureIzmYVdgZN0dpke6Gkj9KqADpgnjMok=",
+  "Source": "Rethink.Patient-Api",
+  "BasePath": "_content/Rethink.Patient-Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
