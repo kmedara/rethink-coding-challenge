@@ -3,10 +3,10 @@
 Concepts: 
 Domain Driven Design Pattern (DDD)
 Command Query Responsibilty Segregation Pattern (CQRS)
-Unit of work pattern 
-
 EF Core and Linq Queries
 https://docs.microsoft.com/en-us/ef/core/querying/
+
+Repositories and/or Unit of work are completely replaced with EF Core DBContext
 
 **Database**
 Local SQL Server DB

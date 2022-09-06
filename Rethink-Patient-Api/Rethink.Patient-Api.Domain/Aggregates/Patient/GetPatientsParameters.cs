@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rethink.Patient_Api.Domain.Aggregates.Patient
 {
-    public interface IGetAllPatientsQueryParameters
+    public class GetPatientsParameters
     {
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

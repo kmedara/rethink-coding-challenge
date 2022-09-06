@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Rethink.Patient-Api.Data\Rethink.Patient-Api.Data.csproj" />
     <ProjectReference Include="..\Rethink.Patient-Api.Domain\Rethink.Patient-Api.Domain.csproj" />
   </ItemGroup>
 

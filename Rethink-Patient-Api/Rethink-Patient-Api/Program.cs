@@ -7,8 +7,6 @@ using Rethink.Patient_Api.Data;
 using Rethink.Patient_Api.Domain.Aggregates.Patient;
 using System.Net;
 using Microsoft.Extensions.Configuration;
-using Rethink.Patient_Api.Data.Repositories;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -24,20 +22,15 @@ var connectionString = new ConnectionString(
 
 //Database and mediator services
 builder.Services
-    .AddTransient<IUnitOfWork, UnitOfWork>()
-    .AddSingleton<ConnectionString>(connectionString)
+    .AddSingleton(connectionString)
     .AddSingleton<DbContextFactory>()
     .TryAddSingleton<IMediator,Mediator>();
-
-//Repositories
-builder.Services
-    .AddTransient<IPatientRepository, PatientRepository>();
 
 
 //CQRS Handlers
 builder.Services
-    .AddTransient<ICommandHandler<AddNewPatientCommand, Task<Patient>>, AddNewPatientCommandHandler>()
-    .AddTransient<IQueryHandler<GetAllPatientsQuery, Task<List<Patient>>>, GetAllPatientsQueryHandler>();
+    .AddTransient<ICommandHandler<CreatePatientCommand, Task<Patient>>, CreatePatientCommandHandler>()
+    .AddTransient<IQueryHandler<GetPatientsQuery, Task<List<Patient>>>, GetPatientsQueryHandler>();
 
 var app = builder.Build();
 

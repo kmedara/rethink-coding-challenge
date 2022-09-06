@@ -1,4 +1,5 @@
 ﻿using Rethink.Patient_Api.CQRS.Commands;
+using Rethink.Patient_Api.Data;
 using Rethink.Patient_Api.Domain.Aggregates.Patient;
 using System;
 using System.Collections.Generic;
@@ -8,27 +9,27 @@ using System.Threading.Tasks;
 
 namespace Rethink.Patient_Api.CQRS.Queries
 {
-    public sealed class GetAllPatientsQuery :
-        Domain.Aggregates.Patient.IGetAllPatientsQueryParameters,
-        IQuery<Task<List<Domain.Aggregates.Patient.Patient>>>
+    public sealed class GetPatientsQuery :
+        GetPatientsParameters,
+        IQuery<Task<List<Patient>>>
     {
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
-        public DateTime[]? Birthday { get; set; }
-        public string? Gender { get; set; }
+
     }
 
-    public class GetAllPatientsQueryHandler : 
-        IQueryHandler<GetAllPatientsQuery, Task<List<Domain.Aggregates.Patient.Patient>>>
+    public class GetPatientsQueryHandler : 
+        IQueryHandler<GetPatientsQuery, Task<List<Patient>>>
     {
-        private readonly IPatientRepository _patientRepository;
-        public GetAllPatientsQueryHandler(IPatientRepository patientRepository)
+        private readonly DbContextFactory _contextFactory;
+        public GetPatientsQueryHandler(DbContextFactory contextFactory)
         {
-            _patientRepository = patientRepository;
+            _contextFactory = contextFactory;
         }
-        public async Task<List<Patient>> Handle(GetAllPatientsQuery query)
+        public async Task<List<Patient>> Handle(GetPatientsQuery query)
         {
-            return (await _patientRepository.GetPatientsAsync(query)).ToList();
+            using(var _context = _contextFactory.GetApplicationContext())
+            {
+                return _context.Set<Patient>().Where(x => query.FirstName == null || x.FirstName.ToLower().Contains(query.FirstName.ToLower())).ToList();
+            }
         }
 
     }

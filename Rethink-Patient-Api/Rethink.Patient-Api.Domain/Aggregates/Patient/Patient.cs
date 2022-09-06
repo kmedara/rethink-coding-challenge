@@ -3,21 +3,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Rethink.Patient_Api.Domain.Aggregates.Patient
 {
-    public enum GENDER
+    public static class GENDER
     {
-        M,
-        F
+        public static string M = "M";
+        public static string F = "F";
     }
-    public class Patient
+    public class Patient: BaseEntity
     {
-        [Key]
-        public int PatientId { get; set; }
-
         
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime Birthday { get; set; }
-        public GENDER Gender { get; set; }
+        public string Gender { get; set; }
 
         [NotMapped]
         public string FullName
