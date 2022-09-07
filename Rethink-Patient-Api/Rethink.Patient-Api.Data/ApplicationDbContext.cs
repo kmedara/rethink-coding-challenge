@@ -15,7 +15,8 @@ namespace Rethink.Patient_Api.Data
         }
     }
 
-    public sealed class DbContextFactory
+    public interface IApplicationDbContextFactory: IDbContextFactory<ApplicationDbContext> { }
+    public class DbContextFactory: IApplicationDbContextFactory
     {
         private readonly ConnectionString connectionString;
 
@@ -24,7 +25,7 @@ namespace Rethink.Patient_Api.Data
             this.connectionString = connectionString;
         }
 
-        public ApplicationDbContext GetApplicationContext()
+        public ApplicationDbContext CreateDbContext()
         {
 
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();

@@ -35,15 +35,23 @@ namespace Rethink_Patient_Api.Controllers
             return Ok(result);
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete([FromQuery] string id)
+        [HttpDelete("{Id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> Delete([FromRoute] DeletePatientCommand parameters)
         {
-            //var result = await _mediator.Dispatch(parameters);
-            //return Ok(result);
+            await _mediator.Dispatch(parameters);
+            return NoContent();
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put([FromBody] )
+        [HttpPut("{Id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Patient))]
+        public async Task<IActionResult> Put([FromRoute] int Id, [FromBody] UpdatePatientCommand parameters)
+        {
+            parameters.Id = Id;
+            var result = await _mediator.Dispatch(parameters);
+            return Ok(result);
+
+        }
 
     }
 }

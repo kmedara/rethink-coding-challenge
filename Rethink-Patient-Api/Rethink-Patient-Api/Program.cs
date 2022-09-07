@@ -1,12 +1,11 @@
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Rethink.Patient_Api.CQRS;
 using Rethink.Patient_Api.CQRS.Commands;
 using Rethink.Patient_Api.CQRS.Queries;
+using Rethink.Patient_Api.CQRS.Util;
 using Rethink.Patient_Api.Data;
 using Rethink.Patient_Api.Domain.Aggregates.Patient;
-using System.Net;
-using Microsoft.Extensions.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,9 +15,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var connectionString = new ConnectionString(
-                builder.Configuration.GetConnectionString("ApplicationDbContext")
-                );
+var connectionString = new ConnectionString(builder.Configuration.GetConnectionString("ApplicationDbContext"));
 
 //Database and mediator services
 builder.Services
@@ -30,7 +27,13 @@ builder.Services
 //CQRS Handlers
 builder.Services
     .AddTransient<ICommandHandler<CreatePatientCommand, Task<Patient>>, CreatePatientCommandHandler>()
+    .AddTransient<ICommandHandler<UpdatePatientCommand, Task<Patient>>, UpdatePatientCommandHandler>()
+    .AddTransient<ICommandHandler<DeletePatientCommand, Task>, DeletePatientCommandHandler>()
     .AddTransient<IQueryHandler<GetPatientsQuery, Task<List<Patient>>>, GetPatientsQueryHandler>();
+
+//automapper config
+builder.Services.AddAutoMapper(typeof(PatientUpdateProfile).Assembly);
+
 
 var app = builder.Build();
 

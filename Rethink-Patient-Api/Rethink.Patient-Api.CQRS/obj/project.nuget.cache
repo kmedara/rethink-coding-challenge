@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "eeTE+erwqDbvFySZps0zj28jC38ECw+fp6bLLozuE68blwggU1TdB165vaI/ZWF1zVd9LXo834ZFgU9BiUmu+w==",
+  "dgSpecHash": "IGaIjfIgVHuX4QtwP+TZ9owOTQDUKOKGIorlvcXfnSftUQLb+0hvXR1gmlJipRE0xvRoAq75FqIVRiMTbtZyXQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\kmedara\\source\\repos\\rethink-coding-challenge\\Rethink-Patient-Api\\Rethink.Patient-Api.CQRS\\Rethink.Patient-Api.CQRS.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\kmedara\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\kmedara\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
+    "C:\\Users\\kmedara\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
+    "C:\\Users\\kmedara\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\kmedara\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\kmedara\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\kmedara\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.8\\microsoft.entityframeworkcore.6.0.8.nupkg.sha512",
