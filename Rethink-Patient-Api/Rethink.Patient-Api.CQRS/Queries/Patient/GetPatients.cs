@@ -25,7 +25,6 @@ namespace Rethink.Patient_Api.CQRS.Queries
         {
             using (var _context = _contextFactory.CreateDbContext())
             {
-                var count = await _context.Set<Patient>().CountAsync();
                 var data = _context.Set<Patient>()
                     .Where(x => query.Id == null || x.Id == query.Id)
                     .Where(x => query.FirstName == null || x.FirstName.ToLower().StartsWith(query.FirstName.ToLower()))
@@ -36,6 +35,8 @@ namespace Rethink.Patient_Api.CQRS.Queries
                     .Where(x => query.Birthday == null || x.Birthday < (query.Birthday.ElementAtOrDefault(1) ?? DateTime.MaxValue))
 
                     .Where(x => query.Gender == null || x.Gender.ToLower() == query.Gender.ToLower());
+
+                var count = await data.CountAsync(); //count of rows that match search criteria
 
                 IOrderedQueryable<Patient> ordered = null;
 
