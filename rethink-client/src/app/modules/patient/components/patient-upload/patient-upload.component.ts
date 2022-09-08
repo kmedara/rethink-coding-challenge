@@ -24,29 +24,9 @@ export class PatientUploadComponent {
     const files = (event?.target as HTMLInputElement)?.files;
     if (files && files[0]) {
       const file = files[0]
-
       this.fileName = file.name;
-
-      //const formData = new FormData();
-
-      //formData.append("File", file, file.name);
-
       this._service.uploadCSV(file).pipe(finalize(() => this.reset()), takeUntil(this.cancel$)).subscribe();
     }
-    //const file:File = event?.target?.files[0];
-
-    // if (file) {
-
-    //     this.fileName = file.name;
-
-    //     const formData = new FormData();
-
-    //     formData.append("thumbnail", file);
-
-    //const upload$ = this.http.post("/api/thumbnail-upload", formData);
-    //const upload$ = this._service.uploadCSV(formData);
-
-    // 
   }
 
   cancelUpload() {

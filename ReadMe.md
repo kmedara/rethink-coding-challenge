@@ -4,6 +4,7 @@
 * Custom Theming
 * Tailwind CSS
 * Lazy Loading Modules
+* Lottie Animations
 
 ## **API Concepts**
 * Domain Driven Design Pattern (DDD)

@@ -16,7 +16,7 @@
 
     <ng-container matColumnDef="firstname">
         <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
-        <mat-cell class="" *matCellDef="let patient; let i = index" [formGroup]="patient" >
+        <mat-cell class="text-center" *matCellDef="let patient; let i = index" [formGroup]="patient" >
             <!-- {{patient.firstName}} -->
             <mat-form-field style="max-width:80%"
             [appearance]="dataSource.editForm.get('editRows')?.value[i].isEditable? 'fill' : 'none'"> <!--angularCompilerOptions.strictTemplates = true in tsconfig.json this leads to error-->
@@ -38,10 +38,13 @@
     <ng-container matColumnDef="birthday">
         <mat-header-cell *matHeaderCellDef>Birthday</mat-header-cell>
         <mat-cell class="" *matCellDef="let patient; let i = index" [formGroup]="patient">
-            <!-- {{patient.birthday | date: 'MM/dd/YYYY'}} -->
-            <mat-form-field style="max-width:80%"
-            [appearance]="dataSource.editForm.get('editRows')?.value[i].isEditable? 'fill' : 'none'"> <!--angularCompilerOptions.strictTemplates = true in tsconfig.json this leads to error-->
-            <input  matInput type="text" formControlName="birthday" [readonly]="!dataSource.editForm.get('editRows')?.value[i].isEditable">
+
+          <mat-form-field [appearance]="dataSource.editForm.get('editRows')?.value[i].isEditable? 'fill' : 'none'">
+            <!-- <mat-label>Choose a date</mat-label> -->
+            <input matInput [matDatepicker]="picker" formControlName="birthday" [readonly]="!dataSource.editForm.get('editRows')?.value[i].isEditable">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker [disabled]="!dataSource.editForm.get('editRows')?.value[i].isEditable"></mat-datepicker>
           </mat-form-field>
         </mat-cell>
     </ng-container>
@@ -53,6 +56,7 @@
             [appearance]="dataSource.editForm.get('editRows')?.value[i].isEditable? 'fill' : 'none'"> <!--angularCompilerOptions.strictTemplates = true in tsconfig.json this leads to error-->
             <input  matInput type="text" formControlName="gender" [readonly]="!dataSource.editForm.get('editRows')?.value[i].isEditable">
           </mat-form-field>
+          
         </mat-cell>
     </ng-container>
 
