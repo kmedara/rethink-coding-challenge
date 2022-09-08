@@ -8,9 +8,9 @@ import { IPatient } from "../../patient/models/patient.model";
 */
 export type ApiFilter<T> = Partial<{[key in keyof T]: string | number | boolean | (string | number | boolean)[]}>
 export type Paging = {
-    skip: number,
-    take: number,
-    sortDirection: SortDirection
+    skip?: number,
+    take?: number,
+    sortDirection?: SortDirection
 }
 
 export type Paged<T> = {
@@ -23,12 +23,13 @@ export type Paged<T> = {
 export type PatientFilter = ApiFilter<IPatient> & Paging
 
 
-
+const patientEndpoint = `${environment.patient_api}/patient`
 
 export const API_ROUTES = {
     Patient: {
-        Get: () => `${environment.patient_api}/patient`,
-        Update: (id: number) => `${environment.patient_api}/patient/${id}`,
-        UploadCsv: () => `${environment.patient_api}/patient/csv`
+        Get: () => patientEndpoint,
+        Update: (id: number) => `${patientEndpoint}/${id}`,
+        UploadCsv: () => `${patientEndpoint}/csv`,
+        Delete: (id: number) => `${patientEndpoint}/${id}`
     }
   }

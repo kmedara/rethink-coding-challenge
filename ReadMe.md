@@ -29,4 +29,4 @@
 ## **Useful Links**
 * [EF Core Querying](https://docs.microsoft.com/en-us/ef/core/querying/)
 * [Connecting to an SQL Server LocalDb](https://stackoverflow.com/questions/43257209/how-to-connect-to-a-local-database-in-sql-server-management-studio)
-
+* [Custom Data Sources in Angular Tables]: https://material.angular.io/components/table/overview#observable-stream-of-data-arrays

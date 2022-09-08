@@ -1,7 +1,8 @@
 import { Component, Input } from "@angular/core";
+import { Store } from "@ngrx/store";
 import { Subject, Subscription } from "rxjs";
-import { finalize, takeUntil } from "rxjs/operators";
-import { PatientService } from "src/app/modules/patient/services/patient.service";
+import { uploadCSV } from "../../state/patient.actions";
+import { PatientState } from "../../state/patient.reducer";
 
 @Component({
   selector: 'app-patient-upload',
@@ -17,15 +18,16 @@ export class PatientUploadComponent {
   uploadProgress: number = 0;
   uploadSub!: Subscription;
   private cancel$ = new Subject<void>();
-  constructor(private _service: PatientService) { }
+  constructor(private _store: Store<PatientState>) {
+   }
 
-  onFileSelected(event: Event) {
-
+  onFileSelected(event: any) {
+    console.log(event)
     const files = (event?.target as HTMLInputElement)?.files;
     if (files && files[0]) {
       const file = files[0]
       this.fileName = file.name;
-      this._service.uploadCSV(file).pipe(finalize(() => this.reset()), takeUntil(this.cancel$)).subscribe();
+      this._store.dispatch(uploadCSV(file))//.pipe(finalize(() => this.reset()), takeUntil(this.cancel$))
     }
   }
 

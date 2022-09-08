@@ -1,14 +1,17 @@
 <mat-form-field>
     <input matInput placeholder="Last Name" #lastNameSearch>
 </mat-form-field>
+<mat-form-field>
+    <input matInput placeholder="Gender" #genderSearch>
+</mat-form-field>
 
-<mat-table class="patients-table mat-elevation-z8" [dataSource]="dataSource" matSort matSortActive="id"
+<mat-table class=" mat-elevation-z8" [dataSource]="dataSource" matSort matSortActive="id"
     matSortDirection="desc" matSortDisableClear>
 
     <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef mat-sort-header>#</mat-header-cell>
         <mat-cell *matCellDef="let patient; let i = index" [formGroup]="patient">
-            <mat-form-field style="width: 70px;" appearance="none">
+            <mat-form-field appearance="none">
                 <input matInput type="text" formControlName="id" [readonly]="true">
               </mat-form-field>
         </mat-cell>
@@ -16,9 +19,8 @@
 
     <ng-container matColumnDef="firstname">
         <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
-        <mat-cell class="text-center" *matCellDef="let patient; let i = index" [formGroup]="patient" >
-            <!-- {{patient.firstName}} -->
-            <mat-form-field style="max-width:80%"
+        <mat-cell *matCellDef="let patient; let i = index" [formGroup]="patient" >
+            <mat-form-field 
             [appearance]="dataSource.editForm.get('editRows')?.value[i].isEditable? 'fill' : 'none'"> <!--angularCompilerOptions.strictTemplates = true in tsconfig.json this leads to error-->
             <input  matInput type="text" formControlName="firstName" [readonly]="!dataSource.editForm.get('editRows')?.value[i].isEditable">
           </mat-form-field>
@@ -28,7 +30,7 @@
     <ng-container matColumnDef="lastname">
         <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
         <mat-cell class="" *matCellDef="let patient; let i = index" [formGroup]="patient"> 
-            <mat-form-field style="max-width:80%"
+            <mat-form-field
             [appearance]="dataSource.editForm.get('editRows')?.value[i].isEditable? 'fill' : 'none'"> <!--angularCompilerOptions.strictTemplates = true in tsconfig.json this leads to error-->
             <input  matInput type="text" formControlName="lastName" [readonly]="!dataSource.editForm.get('editRows')?.value[i].isEditable">
           </mat-form-field></mat-cell>
@@ -39,11 +41,10 @@
         <mat-header-cell *matHeaderCellDef>Birthday</mat-header-cell>
         <mat-cell class="" *matCellDef="let patient; let i = index" [formGroup]="patient">
 
-          <mat-form-field [appearance]="dataSource.editForm.get('editRows')?.value[i].isEditable? 'fill' : 'none'">
+          <mat-form-field [appearance]="dataSource.editForm.get('editRows')?.value[i].isEditable? 'fill' : 'none'" >
             <!-- <mat-label>Choose a date</mat-label> -->
             <input matInput [matDatepicker]="picker" formControlName="birthday" [readonly]="!dataSource.editForm.get('editRows')?.value[i].isEditable">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker-toggle matTooltip="MM/DD/YYYY" matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker [disabled]="!dataSource.editForm.get('editRows')?.value[i].isEditable"></mat-datepicker>
           </mat-form-field>
         </mat-cell>
@@ -52,7 +53,7 @@
     <ng-container matColumnDef="gender">
         <mat-header-cell *matHeaderCellDef>Gender</mat-header-cell>
         <mat-cell class="" *matCellDef="let patient; let i = index" [formGroup]="patient">
-            <mat-form-field style="max-width:80%;padding:10px"
+            <mat-form-field 
             [appearance]="dataSource.editForm.get('editRows')?.value[i].isEditable? 'fill' : 'none'"> <!--angularCompilerOptions.strictTemplates = true in tsconfig.json this leads to error-->
             <input  matInput type="text" formControlName="gender" [readonly]="!dataSource.editForm.get('editRows')?.value[i].isEditable">
           </mat-form-field>
@@ -84,9 +85,9 @@
                                     <mat-icon>edit</mat-icon>
                                 </button>
 
-            <button disabled mat-icon-button class="material-icons app-toolbar-menu delete-button"
+            <button mat-icon-button class="material-icons app-toolbar-menu delete-button"
                                     *ngIf="!dataSource.editForm.get('editRows').value[i].isEditable"
-                                    matTooltip="Delete" color="warn">
+                                    matTooltip="Delete" color="warn" (click)="deletePatient(dataSource.editForm,i)">
                                     <mat-icon>delete</mat-icon>
                                 </button>
         </mat-cell>

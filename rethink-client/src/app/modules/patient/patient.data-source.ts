@@ -5,10 +5,14 @@ import { BehaviorSubject, Observable, of, Subject } from "rxjs";
 import { catchError, skip, takeUntil } from "rxjs/operators";
 import { PatientFilter } from "../core/api/api.routes";
 import { IPatient } from "./models/patient.model";
-import { loadPatients, resetState, updatePatient } from "./state/patient.actions";
+import { deletePatient, loadPatients, resetState, updatePatient } from "./state/patient.actions";
 import { PatientState } from "./state/patient.reducer";
 import { selectCount, selectPatients } from "./state/patient.selectors";
 
+/**
+ * @description - typed fn used to manipulate values in edit table
+ */
+export type DataSourceFn = (forms: FormGroup, i: number) => void;
 /**
  * @description Custom Angular CDK Datasource
  * https://blog.angular-university.io/angular-material-data-table/
@@ -19,7 +23,7 @@ export class PatientsDataSource implements DataSource<AbstractControl<any, any>>
     private lengthSubject$ = new BehaviorSubject<number>(0);
     private complete$ = new Subject();
     private patients$ = this.store.select(selectPatients)
-
+    private _filter: PatientFilter = { skip: 0, take: 0, sortDirection: 'desc'};
     public loading$ = this.loadingSubject.asObservable();
     public length$ = this.store.select(selectCount);
     public editFormControls = new BehaviorSubject<AbstractControl<any, any>[]>([]);
@@ -54,7 +58,7 @@ export class PatientsDataSource implements DataSource<AbstractControl<any, any>>
 
 
     loadData(filter: PatientFilter) {
-
+       this._filter = filter;
         this.store.dispatch(resetState());
         this.loadingSubject.next(true);
         this.store.dispatch(loadPatients(filter));
@@ -64,8 +68,11 @@ export class PatientsDataSource implements DataSource<AbstractControl<any, any>>
     updatePatient(patient: IPatient) {
         this.store.dispatch(updatePatient(patient));
     }
+    deletePatient(id: number, rowIndex: any) {
+        this.store.dispatch(deletePatient(id));
+    }
 
-    createEditableRows(arr: IPatient[]) {
+    private createEditableRows(arr: IPatient[]) {
         this.editForm = this._fb.group({
             editRows: this._fb.array(arr.map(val => this._fb.group({
                 id: new FormControl(val.id),

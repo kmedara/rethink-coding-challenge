@@ -1,13 +1,48 @@
-table {
-    width: 100%;
-  }
-  
-  .mat-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
-  
-  td, th {
-    width: 25%;
-  }
-  
+// .demo-table {
+//   width: 100%;
+// }
+
+
+// .font-bold {
+//   font-weight: bold;
+// }
+.mat-column-firstname {
+ font-weight: bolder ;
+}
+
+.mat-column-lastname {
+  font-weight: bolder ;
+
+}
+
+.mat-column-birthday {
+  font-weight: bolder ;
+}
+
+.mat-column-gender {
+  width: 32px;
+  text-align: center;
+  font-weight: bold ;
+}
+
+//auto generated cell names
+.cdk-column-firstname {
+  padding-top: 1%;
+  padding-left: 2%;
+  padding-right: 2%; 
+}
+.cdk-column-lastname {
+  padding-top: 1%;
+  padding-left: 2%;
+  padding-right: 2%; 
+}
+.cdk-column-birthday {
+  padding-top: 1%;
+  padding-left: 2%;
+  padding-right: 2%; 
+}
+.cdk-column-gender {  
+  padding-top: 1%;
+  padding-left: 2%;
+  padding-right: 2%; 
+}
