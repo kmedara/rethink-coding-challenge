@@ -5,6 +5,7 @@
 
 ##vs code
 *.vs
+.vscode
 *.node_modules
 */.angular/cache/
 *.pack
