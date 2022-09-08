@@ -29,9 +29,10 @@ namespace Rethink.Patient_Api.Data
         {
 
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
-            builder.UseSqlServer(connectionString.Value);
+            builder.UseSqlServer(connectionString.Value).LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
             return new ApplicationDbContext(builder.Options);
         }
+
     }
 
     public class ConnectionString

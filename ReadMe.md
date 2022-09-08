@@ -1,5 +1,3 @@
-
-
 **Concepts**
 Domain Driven Design Pattern (DDD)
 Command Query Responsibilty Segregation Pattern (CQRS)

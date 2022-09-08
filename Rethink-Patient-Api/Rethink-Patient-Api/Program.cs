@@ -5,6 +5,7 @@ using Rethink.Patient_Api.CQRS.Queries;
 using Rethink.Patient_Api.CQRS.Util;
 using Rethink.Patient_Api.Data;
 using Rethink.Patient_Api.Domain.Aggregates.Patient;
+using Rethink.Patient_Api.Domain.API;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,11 +30,23 @@ builder.Services
     .AddTransient<ICommandHandler<CreatePatientCommand, Task<Patient>>, CreatePatientCommandHandler>()
     .AddTransient<ICommandHandler<UpdatePatientCommand, Task<Patient>>, UpdatePatientCommandHandler>()
     .AddTransient<ICommandHandler<DeletePatientCommand, Task>, DeletePatientCommandHandler>()
-    .AddTransient<IQueryHandler<GetPatientsQuery, Task<List<Patient>>>, GetPatientsQueryHandler>();
+    .AddTransient<IQueryHandler<GetPatientsQuery, Task<Paged<Patient>>>, GetPatientsQueryHandler>();
 
 //automapper config
 builder.Services.AddAutoMapper(typeof(PatientUpdateProfile).Assembly);
 
+//CORS
+string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(MyAllowSpecificOrigins,
+    builder =>
+    {
+        builder.WithOrigins("https://localhost:4200", "http://localhost:4200")
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -44,6 +57,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors(MyAllowSpecificOrigins);
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

@@ -39,8 +39,8 @@ namespace Rethink.Patient_Api.Test.Handlers
                 var handler = new GetPatientsQueryHandler(mockDbContextFactory.Object);
                 var patients = await handler.Handle(new GetPatientsQuery() { Id = 1 });
 
-                Assert.NotNull(patients.Single());
-                Assert.Equal(1,patients.Single().Id);
+                Assert.NotNull(patients.data.Single());
+                Assert.Equal(1,patients.data.Single().Id);
             }
         }
     }

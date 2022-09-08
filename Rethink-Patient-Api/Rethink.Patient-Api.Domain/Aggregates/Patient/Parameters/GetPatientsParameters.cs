@@ -15,5 +15,10 @@ namespace Rethink.Patient_Api.Domain.Aggregates.Patient.Parameters
         public DateTime?[]? Birthday { get; set; } //search a range
 
         public string? Gender { get; set; }
+
+        public int? skip { get; set; }
+        public int? take { get; set; }
+
+        public string? sortDirection { get; set; }
     }
 }

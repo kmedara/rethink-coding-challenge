@@ -50,7 +50,6 @@ namespace Rethink_Patient_Api.Controllers
             parameters.Id = Id;
             var result = await _mediator.Dispatch(parameters);
             return Ok(result);
-
         }
 
     }

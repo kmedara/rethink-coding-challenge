@@ -1,0 +1,23 @@
+@keyframes spinner {
+  to {transform: rotate(360deg); width: 24px;
+    height: 24px;}
+}
+
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: blue;
+  animation: spinner .8s linear infinite running;
+}
+.spinner mat-icon {
+  display: none;
+}

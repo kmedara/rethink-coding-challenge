@@ -1,0 +1,100 @@
+<mat-form-field>
+    <input matInput placeholder="Last Name" #lastNameSearch>
+</mat-form-field>
+
+<mat-table class="patients-table mat-elevation-z8" [dataSource]="dataSource" matSort matSortActive="id"
+    matSortDirection="desc" matSortDisableClear>
+
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>#</mat-header-cell>
+        <mat-cell *matCellDef="let patient; let i = index" [formGroup]="patient">
+            <mat-form-field style="width: 70px;" appearance="none">
+                <input matInput type="text" formControlName="id" [readonly]="true">
+              </mat-form-field>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="firstname">
+        <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+        <mat-cell class="" *matCellDef="let patient; let i = index" [formGroup]="patient" >
+            <!-- {{patient.firstName}} -->
+            <mat-form-field style="max-width:80%"
+            [appearance]="dataSource.editForm.get('editRows')?.value[i].isEditable? 'fill' : 'none'"> <!--angularCompilerOptions.strictTemplates = true in tsconfig.json this leads to error-->
+            <input  matInput type="text" formControlName="firstName" [readonly]="!dataSource.editForm.get('editRows')?.value[i].isEditable">
+          </mat-form-field>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lastname">
+        <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+        <mat-cell class="" *matCellDef="let patient; let i = index" [formGroup]="patient"> 
+            <mat-form-field style="max-width:80%"
+            [appearance]="dataSource.editForm.get('editRows')?.value[i].isEditable? 'fill' : 'none'"> <!--angularCompilerOptions.strictTemplates = true in tsconfig.json this leads to error-->
+            <input  matInput type="text" formControlName="lastName" [readonly]="!dataSource.editForm.get('editRows')?.value[i].isEditable">
+          </mat-form-field></mat-cell>
+       
+    </ng-container>
+
+    <ng-container matColumnDef="birthday">
+        <mat-header-cell *matHeaderCellDef>Birthday</mat-header-cell>
+        <mat-cell class="" *matCellDef="let patient; let i = index" [formGroup]="patient">
+            <!-- {{patient.birthday | date: 'MM/dd/YYYY'}} -->
+            <mat-form-field style="max-width:80%"
+            [appearance]="dataSource.editForm.get('editRows')?.value[i].isEditable? 'fill' : 'none'"> <!--angularCompilerOptions.strictTemplates = true in tsconfig.json this leads to error-->
+            <input  matInput type="text" formControlName="birthday" [readonly]="!dataSource.editForm.get('editRows')?.value[i].isEditable">
+          </mat-form-field>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="gender">
+        <mat-header-cell *matHeaderCellDef>Gender</mat-header-cell>
+        <mat-cell class="" *matCellDef="let patient; let i = index" [formGroup]="patient">
+            <mat-form-field style="max-width:80%;padding:10px"
+            [appearance]="dataSource.editForm.get('editRows')?.value[i].isEditable? 'fill' : 'none'"> <!--angularCompilerOptions.strictTemplates = true in tsconfig.json this leads to error-->
+            <input  matInput type="text" formControlName="gender" [readonly]="!dataSource.editForm.get('editRows')?.value[i].isEditable">
+          </mat-form-field>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="" *matCellDef="let patient; let i = index" [formGroup]="patient">
+            <!-- <button mat-icon-button color="accent"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button color="warn"><mat-icon>delete</mat-icon></button> -->
+            <button mat-icon-button class="material-icons app-toolbar-menu save-button"
+                                    matTooltip="Save Changes" (click)="saveEdit(dataSource.editForm,i)"
+                                    *ngIf="dataSource.editForm.get('editRows').value[i].isEditable" color="primary">
+                                    <mat-icon>check_circle</mat-icon>
+                                </button>
+
+            <button mat-icon-button class="material-icons app-toolbar-menu cancel-button"
+                                    matTooltip="Cancel Changes" color="warn"
+                                    (click)="cancelEdit(dataSource.editForm,i)"
+                                    *ngIf="dataSource.editForm.get('editRows').value[i].isEditable">
+                                    <mat-icon>cancel</mat-icon>
+                                </button>
+
+            <button mat-icon-button class="material-icons app-toolbar-menu save-button"
+                                    *ngIf="!dataSource.editForm.get('editRows').value[i].isEditable"
+                                    matTooltip="Edit" color="primary" (click)="allowEdit(dataSource.editForm,i)">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+
+            <button disabled mat-icon-button class="material-icons app-toolbar-menu delete-button"
+                                    *ngIf="!dataSource.editForm.get('editRows').value[i].isEditable"
+                                    matTooltip="Delete" color="warn">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns" ></mat-row>
+
+</mat-table>
+<mat-card *ngIf="dataSource.loading$ | async" style="display: flex; justify-content: center; align-items: center">
+    <mat-progress-spinner color="primary" mode="indeterminate">
+    </mat-progress-spinner>
+</mat-card>
+<mat-paginator [length]="dataSource.length$ | async" [pageSizeOptions]="pageSizeOptions"></mat-paginator>
