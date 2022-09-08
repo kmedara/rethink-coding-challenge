@@ -19,7 +19,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
   declarations: [
     NotFoundComponent,
     MainLayoutComponent,
-    NavigationComponent
+    NavigationComponent,
+  ],
+  exports: [
   ],
   imports: [
     CommonModule,

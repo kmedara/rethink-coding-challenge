@@ -28,6 +28,7 @@ export type PatientFilter = ApiFilter<IPatient> & Paging
 export const API_ROUTES = {
     Patient: {
         Get: () => `${environment.patient_api}/patient`,
-        Update: (id: number) => `${environment.patient_api}/patient/${id}`
+        Update: (id: number) => `${environment.patient_api}/patient/${id}`,
+        UploadCsv: () => `${environment.patient_api}/patient/csv`
     }
   }

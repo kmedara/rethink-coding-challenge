@@ -6,7 +6,7 @@
 ##vs code
 *.vs
 *.node_modules
-.angular/cache/
+*/.angular/cache/
 *.pack
 *.pack.old
 # User-specific files

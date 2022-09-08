@@ -30,6 +30,7 @@ builder.Services
     .AddTransient<ICommandHandler<CreatePatientCommand, Task<Patient>>, CreatePatientCommandHandler>()
     .AddTransient<ICommandHandler<UpdatePatientCommand, Task<Patient>>, UpdatePatientCommandHandler>()
     .AddTransient<ICommandHandler<DeletePatientCommand, Task>, DeletePatientCommandHandler>()
+    .AddTransient<ICommandHandler<UploadPatientCsvCommand, Task>, UploadPatientCsvCommandHandler>()
     .AddTransient<IQueryHandler<GetPatientsQuery, Task<Paged<Patient>>>, GetPatientsQueryHandler>();
 
 //automapper config

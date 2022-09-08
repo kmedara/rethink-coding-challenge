@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { CoreModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -17,18 +19,22 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { PatientDashboardComponent } from './components/patient-dashboard/patient-dashboard.component';
 import { PatientTableComponent } from './components/patient-table/patient-table.component';
+import { PatientUploadComponent } from './components/patient-upload/patient-upload.component';
 import { PatientContainerComponent } from './containers/patient-container/patient-container.component';
 import { PatientRoutes } from './patient.routing';
+
 import { PatientEffects } from './state/patient.effects';
 @NgModule({
   declarations: [
     PatientContainerComponent,
     PatientDashboardComponent,
-    PatientTableComponent
+    PatientTableComponent,
+    PatientUploadComponent
   ],
   imports: [
     CommonModule,
     PatientRoutes,
+    MatDividerModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -46,6 +52,7 @@ import { PatientEffects } from './state/patient.effects';
     FormsModule,
     ReactiveFormsModule,
     MatSnackBarModule,
+    CoreModule,
     EffectsModule.forFeature([PatientEffects])
   ]
 })

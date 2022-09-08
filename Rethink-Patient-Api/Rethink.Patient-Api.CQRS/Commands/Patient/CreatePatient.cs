@@ -26,7 +26,7 @@ namespace Rethink.Patient_Api.CQRS.Commands
             using (var _context = _contextFactory.CreateDbContext())
             {
 
-                var entry = _context.Add(new Patient()
+                var entry = await _context.AddAsync(new Patient()
                 {
                     FirstName = command.FirstName,
                     LastName = command.LastName,

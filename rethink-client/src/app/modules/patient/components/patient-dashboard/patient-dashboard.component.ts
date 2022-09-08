@@ -18,4 +18,8 @@ export class PatientDashboardComponent implements OnInit {
   ngOnDestroy(): void {
   }
 
+  upload(t: any): void {
+    console.log(t)
+  }
+
 }

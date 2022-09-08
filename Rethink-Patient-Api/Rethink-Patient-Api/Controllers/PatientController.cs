@@ -4,6 +4,8 @@ using Rethink.Patient_Api.CQRS.Commands;
 using Rethink.Patient_Api.CQRS.Queries;
 using Rethink.Patient_Api.Domain.Aggregates.Patient;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 
 namespace Rethink_Patient_Api.Controllers
 {
@@ -33,6 +35,22 @@ namespace Rethink_Patient_Api.Controllers
         {
             var result = await _mediator.Dispatch(parameters);
             return Ok(result);
+        }
+
+        [HttpPost("csv")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> CreateFromCSV()
+        {
+            var file = Request.Form.Files[0];
+            if (file.ContentType != "text/csv")
+            {
+                return BadRequest("File must be csv");
+            }
+
+            await _mediator.Dispatch(new UploadPatientCsvCommand() { File= file });
+
+            return NoContent();
         }
 
         [HttpDelete("{Id}")]

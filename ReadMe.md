@@ -1,8 +1,16 @@
-**Concepts**
+**Front-End Concept**
+Angular 14
+Angular CDK
+Custom Theming
+Tailwind CSS
+Lazy Loading Modules
+
+**API Concepts**
 Domain Driven Design Pattern (DDD)
 Command Query Responsibilty Segregation Pattern (CQRS)
 EF Core 
 Linq-to-Entity Queries
+CsvHelper for CSV data upload
 
 EF Core DbContext has repository and unit of work patterns baked in
 
