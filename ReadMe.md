@@ -12,7 +12,8 @@
 * Linq-to-Entity Queries
 * CsvHelper for CSV data upload
 
-EF Core DbContext has repository and unit of work patterns baked in
+**EF Core DbContext has repository and unit of work patterns baked in**
+**Generated SQL Query logs to console in visual studio with log level "info"**
 
 ## **Database**
 * Local SQL Server DB
@@ -25,6 +26,6 @@ EF Core DbContext has repository and unit of work patterns baked in
 * Moq
 
 ## **Useful Links**
-[link]https://docs.microsoft.com/en-us/ef/core/querying/
-https://stackoverflow.com/questions/43257209/how-to-connect-to-a-local-database-in-sql-server-management-studio
+* [EF Core Querying](https://docs.microsoft.com/en-us/ef/core/querying/)
+* [Connecting to an SQL Server LocalDb](https://stackoverflow.com/questions/43257209/how-to-connect-to-a-local-database-in-sql-server-management-studio)
 
