@@ -1,0 +1,79 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: accounts
+  namespace: apps
+  labels:
+    app: accounts
+  #annotations:
+  #  deployment.kubernetes.io/revision: '1'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: accounts
+  template:
+    metadata:
+      labels:
+        aadpodidbinding: accounts
+        app: accounts
+      #annotations:
+      #  sumologic.com/sourceCategory: deployment
+      #  sumologic.com/sourceName: accounts
+    spec:
+      containers:
+       - name: accounts
+         image: rethinkfirst.azurecr.io/rethinkbh/accounts:latest # rethinkbh/accounts:latest
+         ports:
+         - containerPort: 8080
+           protocol: TCP
+         #volumeMounts:
+         #- name: appsettings-volume
+         #  mountPath: /app/appsettings.json
+         #  subPath: appsettings.json
+         resources: {}
+         imagePullPolicy: Always
+         #env: 
+         envFrom:
+         - configMapRef:
+            name: common-config # All the key-value pair will be taken as environment key-value pair
+         - configMapRef:
+            name: accounts-config
+      
+         #- name: ConnectionStrings__ApplicationDbContext
+         #  valueFrom:
+         #   configMapKeyRef:
+         #    name: common-config
+         #    key: ApplicationDbContext
+         #- name: AllowedApplicationKeys__0
+         #  valueFrom:
+         #   configMapKeyRef:
+         #    name: common-config
+         #    key: AllowedApplicationKeys__0
+         #- name: ApplicationInsights__ConnectionString
+         #  valueFrom:
+         #   configMapKeyRef:
+         #    name: accounts-config
+         #    key: ApplicationInsights
+      #volumes:
+      #- name: appsettings-volume
+        #projected:
+        # sources:
+        # - configMap:
+        #    name: common-config
+         #- configMap:
+         #   name: accounts-config
+
+        #configMap:
+        #  name: common-config
+      restartPolicy: Always
+      dnsPolicy: ClusterFirst
+      automountServiceAccountToken: true
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600

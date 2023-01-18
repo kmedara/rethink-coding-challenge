@@ -1,0 +1,24 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: accounts
+  namespace: apps
+  labels:
+    app: accounts
+spec:
+  ports:
+    - name: accounts
+      protocol: TCP
+      port: 8080
+      targetPort: 80
+  selector:
+    app: accounts
+  #clusterIP: 10.0.169.185
+  #clusterIPs:
+  #  - 10.0.169.185
+  type: ClusterIP
+  #sessionAffinity: None
+  #ipFamilies:
+  #  - IPv4
+  #ipFamilyPolicy: SingleStack
+  #internalTrafficPolicy: Cluster
