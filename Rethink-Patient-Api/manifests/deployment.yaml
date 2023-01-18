@@ -21,16 +21,15 @@ spec:
       #  sumologic.com/sourceCategory: deployment
       #  sumologic.com/sourceName: accounts
     spec:
+      restartPolicy: Always
+      dnsPolicy: ClusterFirst
+      automountServiceAccountToken: true
       containers:
        - name: accounts
          image: rethinkfirst.azurecr.io/rethinkbh/accounts:latest # rethinkbh/accounts:latest
          ports:
          - containerPort: 8080
            protocol: TCP
-         #volumeMounts:
-         #- name: appsettings-volume
-         #  mountPath: /app/appsettings.json
-         #  subPath: appsettings.json
          resources: {}
          imagePullPolicy: Always
          #env: 
@@ -39,37 +38,6 @@ spec:
             name: common-config # All the key-value pair will be taken as environment key-value pair
          - configMapRef:
             name: accounts-config
-      
-         #- name: ConnectionStrings__ApplicationDbContext
-         #  valueFrom:
-         #   configMapKeyRef:
-         #    name: common-config
-         #    key: ApplicationDbContext
-         #- name: AllowedApplicationKeys__0
-         #  valueFrom:
-         #   configMapKeyRef:
-         #    name: common-config
-         #    key: AllowedApplicationKeys__0
-         #- name: ApplicationInsights__ConnectionString
-         #  valueFrom:
-         #   configMapKeyRef:
-         #    name: accounts-config
-         #    key: ApplicationInsights
-      #volumes:
-      #- name: appsettings-volume
-        #projected:
-        # sources:
-        # - configMap:
-        #    name: common-config
-         #- configMap:
-         #   name: accounts-config
-
-        #configMap:
-        #  name: common-config
-      restartPolicy: Always
-      dnsPolicy: ClusterFirst
-      automountServiceAccountToken: true
-
   strategy:
     type: RollingUpdate
     rollingUpdate:
